@@ -1,0 +1,12 @@
+version:  '3' # version of docker-compose 3.3 or 2.2 or 1 
+services: 
+  web:
+    build:
+      context: . # current directory
+      dockerfile: Dockerfile.dev
+    # 发现没有key value pair的就是用 - 来表示比如你看ports等等
+    ports:
+      - '3000:3000'
+    volumes:
+      - /app/node_modules
+      - .:/app
