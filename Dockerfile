@@ -1,8 +1,8 @@
-FROM node:alpine as builder_stage_1
+FROM mhart/alpine-node:10 as builder_stage_1
 WORKDIR /app
-COPY package.json .  
+COPY package*.json ./  
 RUN npm install
-COPY . .
+COPY ./ ./
 RUN npm build 
 
 FROM nginx

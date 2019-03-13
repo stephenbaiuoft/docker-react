@@ -3,7 +3,7 @@ services:
   web:
     build:
       context: . # current directory
-      dockerfile: Dockerfile.dev
+      dockerfile: Dockerfile.dev #docker-compose... configured to do dev testing
     # 发现没有key value pair的就是用 - 来表示比如你看ports等等
     ports:
       - '3000:3000'
