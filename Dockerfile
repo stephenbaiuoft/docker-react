@@ -1,4 +1,4 @@
-FROM mhart/alpine-node:10 as builder_stage_1
+FROM mhart/alpine-node:10 as builder
 WORKDIR /app
 COPY package*.json ./  
 RUN npm install
@@ -7,4 +7,4 @@ RUN npm build
 
 FROM nginx
 EXPOSE 80 
-COPY --from=builder_stage_1 /app/build /usr/share/nginx/html
+COPY --from=builder /app/build /usr/share/nginx/html
