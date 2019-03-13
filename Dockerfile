@@ -1,9 +1,9 @@
 FROM mhart/alpine-node:10 as builder
-COPY package*.json ./
+COPY package*.json ./  
 RUN npm install
 COPY . .
-RUN npm build
+RUN npm build 
 
 FROM nginx
 EXPOSE 80 
-COPY --from=builder . /usr/share/nginx/html
+COPY --from=builder /build /usr/share/nginx/html
