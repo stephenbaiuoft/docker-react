@@ -7,3 +7,18 @@ before_install:
 
 script:
   - docker run dev_image npm run test -- --coverage #overwrite the default command
+
+deploy:
+  provider: elasticbeanstalk
+  region: 'us-west-2'
+  app: 'react-docker'
+  env: 'ReactDocker-env'
+  bucket_name: 'elasticbeanstalk-us-west-2-947648374705'
+  bucket_path: 'react-docker' # use as default as initially the elasticbeanstalk project isn't created yet
+  on:
+    branch: master # set the condition to deploy only when master is updated
+
+# we need API keys s.t travis has access to my AWS account    
+    access_key_id: $AWS_ACCESS_KEY
+    secret_access_key:   # these key value contents are just conventions i think
+      secure: "$AWS_SECRET_KEY" # doulbe quotes --> just syntax
