@@ -2,7 +2,7 @@ FROM mhart/alpine-node:10 as builder
 WORKDIR /app
 COPY package*.json ./  
 RUN npm install
-COPY ./ ./
+COPY . .
 RUN npm build 
 
 FROM nginx
